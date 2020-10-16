@@ -30,19 +30,22 @@ function createCards() {
 
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
-  startBtn = document.getElementById('start-game')
-  startBtn.remove()
   const buttons = [
     {name: "shuffle-btn", innerHTML: "Shuffle"}, 
     {name: "show-hide-btn", innerHTML: "Show/Hide"}
-  ]
+  ];
   buttons.forEach((btn) => {
     const button = document.createElement('button');
     button.classList.add('btn', 'btn-lg', 'btn-secondary', `${btn.name}`);
     button.style.margin = '5px';
-    button.innerHTML = `${btn.innerHTML}`
-    btnWrapper.appendChild(button)
+    button.innerHTML = `${btn.innerHTML}`;
+    btnWrapper.appendChild(button);
   })
+}
+
+function removeStartBtn () {
+  startBtn = document.getElementById('start-game');
+  startBtn.remove();
 }
 
 
@@ -50,6 +53,7 @@ function createButtons() {
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
+  removeStartBtn ();
   createButtons();
   createCards();
 }

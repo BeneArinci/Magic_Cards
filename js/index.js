@@ -16,8 +16,11 @@ function createCards() {
       //console.log(cardObject)
     }
   }
-
   // For each dataObject, create a new card and append it to the DOM
+  feedCardsWrapper()
+}
+
+function feedCardsWrapper () {
   cards.forEach((card, i) => {
     const positionFromLeft = i*30;
     const cardElement = document.createElement('div');
@@ -50,11 +53,20 @@ function removeStartBtn () {
 }
 
 function flipCards () {
-  console.log('called')
-    if (cardsWrapper.classList.contains('hidden')) {
-      cardsWrapper.classList.remove('hidden')
-    } else { cardsWrapper.classList.add('hidden') };
+  if (cardsWrapper.classList.contains('hidden')) {
+    cardsWrapper.classList.remove('hidden')
+  } else { cardsWrapper.classList.add('hidden') };
 }
+
+function shuffleCards () {
+  function shuffle (cards) {
+    cards.sort(() => Math.random() - 0.5);
+  }
+  shuffle(cards)
+  feedCardsWrapper(cards)
+}
+
+
 
 function listenForClicks () {
   const btn = document.getElementById('show-hide-btn')
@@ -68,6 +80,9 @@ function startGame() {
   createButtons();
   createCards();
   listenForClicks();
+  const btn = document.getElementById('shuffle-btn')
+  btn.addEventListener('click', shuffleCards)
+  console.log(cards[0])
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);

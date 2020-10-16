@@ -34,7 +34,12 @@ function createButtons() {
   shuffleBtn.classList.add('btn', 'btn-lg', 'btn-secondary');
   shuffleBtn.style.margin = '10px';
   shuffleBtn.innerHTML = 'Shuffle'
+  const hideBtn = document.createElement('button');
+  hideBtn.classList.add('btn', 'btn-lg', 'btn-secondary');
+  hideBtn.style.margin = '10px';
+  hideBtn.innerHTML = 'Hide Cards'
   btnWrapper.append(shuffleBtn)
+  btnWrapper.append(hideBtn)
 }
 
 // Function to start the game by clearing the wrapper, creating

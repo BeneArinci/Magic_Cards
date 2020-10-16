@@ -66,11 +66,11 @@ function shuffleCards () {
   feedCardsWrapper(cards)
 }
 
-
-
 function listenForClicks () {
-  const btn = document.getElementById('show-hide-btn')
-  btn.addEventListener('click', flipCards)
+  const btnFlip = document.getElementById('show-hide-btn')
+  btnFlip.addEventListener('click', flipCards)
+  const btnShuffle = document.getElementById('shuffle-btn')
+  btnShuffle.addEventListener('click', shuffleCards)
 }
 
 // Function to start the game by clearing the wrapper, creating
@@ -80,8 +80,7 @@ function startGame() {
   createButtons();
   createCards();
   listenForClicks();
-  const btn = document.getElementById('shuffle-btn')
-  btn.addEventListener('click', shuffleCards)
+  
   console.log(cards[0])
 }
 

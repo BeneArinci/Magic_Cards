@@ -52,9 +52,15 @@ function listenForCardsClick () {
   deck = [...cardsWrapper.children]
   deck.forEach((singleCard) => {
     singleCard.addEventListener('click', function() {
-      console.log(singleCard);
+      selectCard(singleCard);
     });
   })   
+}
+
+function selectCard (card) {
+  const positionFromLeft = 0;
+  card.style.left = `${positionFromLeft}px`;
+  selectedCardsWrapper.appendChild(card)
 }
 
 function removeStartBtn () {

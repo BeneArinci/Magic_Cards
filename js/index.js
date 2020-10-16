@@ -53,6 +53,7 @@ function listenForCardsClick () {
   deck.forEach((singleCard) => {
     singleCard.addEventListener('click', function() {
       selectCard(singleCard);
+      addMagicBtn();
     });
   })   
 }
@@ -61,6 +62,15 @@ function selectCard (card) {
   const positionFromLeft = 0;
   card.style.left = `${positionFromLeft}px`;
   selectedCardsWrapper.appendChild(card)
+}
+
+function addMagicBtn () {
+  const magicBtn = document.createElement('button');
+    magicBtn.classList.add('btn', 'btn-lg', 'btn-secondary');
+    magicBtn.setAttribute('id', `magic-btn`)
+    magicBtn.style.margin = '5px';
+    magicBtn.innerHTML = `Magic`;
+    btnWrapper.appendChild(magicBtn); 
 }
 
 function removeStartBtn () {

@@ -59,11 +59,12 @@ function flipCards () {
 }
 
 function shuffleCards () {
-  function shuffle (cards) {
-    cards.sort(() => Math.random() - 0.5);
-  }
   shuffle(cards)
   feedCardsWrapper(cards)
+}
+
+function shuffle (cards) {
+  cards.sort(() => Math.random() - 0.5);
 }
 
 function listenForClicks () {
@@ -80,8 +81,6 @@ function startGame() {
   createButtons();
   createCards();
   listenForClicks();
-  
-  console.log(cards[0])
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);

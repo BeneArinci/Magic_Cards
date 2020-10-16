@@ -2,9 +2,9 @@ const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
 const cardsWrapper = document.querySelector('.cards-wrapper');
 const btnWrapper = document.querySelector('.btn-wrapper'); /* eslint-disable-line */
 const selectedCardsWrapper = document.querySelector('.selected-cards'); /* eslint-disable-line */
+const cards = [];
 
 function createCards() {
-  const cards = [];
   // Create an array with objects containing the value and the suit of each card
   for (let x = 0; x < suits.length; x += 1){
     for (let i = 1; i <= 13; i += 1) {
@@ -36,7 +36,8 @@ function createButtons() {
   ];
   buttons.forEach((btn) => {
     const button = document.createElement('button');
-    button.classList.add('btn', 'btn-lg', 'btn-secondary', `${btn.name}`);
+    button.classList.add('btn', 'btn-lg', 'btn-secondary');
+    button.setAttribute('id', `${btn.name}`)
     button.style.margin = '5px';
     button.innerHTML = `${btn.innerHTML}`;
     btnWrapper.appendChild(button);
@@ -48,7 +49,12 @@ function removeStartBtn () {
   startBtn.remove();
 }
 
-
+function flipCards () {
+  console.log('called')
+    if (cardsWrapper.classList.contains('hidden')) {
+      cardsWrapper.classList.remove('hidden')
+    } else { cardsWrapper.classList.add('hidden') };
+}
 
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
@@ -56,6 +62,10 @@ function startGame() {
   removeStartBtn ();
   createButtons();
   createCards();
+  const btn = document.getElementById('show-hide-btn')
+  btn.addEventListener('click', flipCards)
+  //document.getElementById('shuffle-btn').addEventListener('click', flipCards());
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);
+

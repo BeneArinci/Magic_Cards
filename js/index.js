@@ -59,18 +59,30 @@ function listenForCardsClick () {
 }
 
 function selectCard (card) {
-  const positionFromLeft = 0;
-  card.style.left = `${positionFromLeft}px`;
-  selectedCardsWrapper.appendChild(card)
+  const selectedCards = [...selectedCardsWrapper.children]
+  if (selectedCards.length === 0) {
+    const positionFromLeft = 0;
+    card.style.left = `${positionFromLeft}px`;
+    selectedCardsWrapper.appendChild(card)
+  }
 }
 
 function addMagicBtn () {
-  const magicBtn = document.createElement('button');
-    magicBtn.classList.add('btn', 'btn-lg', 'btn-secondary');
-    magicBtn.setAttribute('id', `magic-btn`)
-    magicBtn.style.margin = '5px';
-    magicBtn.innerHTML = `Magic`;
-    btnWrapper.appendChild(magicBtn); 
+  const magicBtn = document.getElementById('magic-btn')
+  if (magicBtn === null) {
+    const button = document.createElement('button');
+    button.classList.add('btn', 'btn-lg', 'btn-secondary');
+    button.setAttribute('id', `magic-btn`)
+    button.style.margin = '5px';
+    button.innerHTML = `Magic`;
+    btnWrapper.appendChild(button); 
+    button.addEventListener('click', () => console.log("clicked"))    
+  }
+}
+
+
+function performTheMagic(card) {
+  console.log(card.classList)
 }
 
 function removeStartBtn () {

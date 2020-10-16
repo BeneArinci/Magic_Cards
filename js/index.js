@@ -17,10 +17,10 @@ function createCards() {
     }
   }
   // For each dataObject, create a new card and append it to the DOM
-  feedCardsWrapper()
+  populateCardsWrapper()
 }
 
-function feedCardsWrapper () {
+function populateCardsWrapper () {
   cards.forEach((card, i) => {
     const positionFromLeft = i*30;
     const cardElement = document.createElement('div');
@@ -29,6 +29,7 @@ function feedCardsWrapper () {
     cardElement.style.left = `${positionFromLeft}px`;
     cardsWrapper.append(cardElement);
   });
+  listenForCardsClick()
 }
 
 // Function to clear out the initial button and create new buttons to play the game.
@@ -47,6 +48,15 @@ function createButtons() {
   })
 }
 
+function listenForCardsClick () {
+  deck = [...cardsWrapper.children]
+  deck.forEach((singleCard) => {
+    singleCard.addEventListener('click', function() {
+      console.log(singleCard);
+    });
+  })   
+}
+
 function removeStartBtn () {
   startBtn = document.getElementById('start-game');
   startBtn.remove();
@@ -59,15 +69,16 @@ function flipCards () {
 }
 
 function shuffleCards () {
+  cardsWrapper.innerHTML = ''
   shuffle(cards)
-  feedCardsWrapper(cards)
+  populateCardsWrapper(cards)
 }
 
 function shuffle (cards) {
   cards.sort(() => Math.random() - 0.5);
 }
 
-function listenForClicks () {
+function listenForBtnsClick () {
   const btnFlip = document.getElementById('show-hide-btn')
   btnFlip.addEventListener('click', flipCards)
   const btnShuffle = document.getElementById('shuffle-btn')
@@ -80,7 +91,7 @@ function startGame() {
   removeStartBtn ();
   createButtons();
   createCards();
-  listenForClicks();
+  listenForBtnsClick();
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);

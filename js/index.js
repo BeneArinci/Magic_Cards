@@ -56,15 +56,18 @@ function flipCards () {
     } else { cardsWrapper.classList.add('hidden') };
 }
 
+function listenForClicks () {
+  const btn = document.getElementById('show-hide-btn')
+  btn.addEventListener('click', flipCards)
+}
+
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
   removeStartBtn ();
   createButtons();
   createCards();
-  const btn = document.getElementById('show-hide-btn')
-  btn.addEventListener('click', flipCards)
-  //document.getElementById('shuffle-btn').addEventListener('click', flipCards());
+  listenForClicks();
 }
 
 document.getElementById('start-game').addEventListener('click', startGame);

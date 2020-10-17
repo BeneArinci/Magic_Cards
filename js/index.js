@@ -85,12 +85,21 @@ function performTheMagic(card) {
   const deck = [...cardsWrapper.children]
   deck.forEach((notSelectedCard) => {
     if(getCardValue(notSelectedCard) === cardValue) {
-      console.log(notSelectedCard.classList)
+      //console.log(notSelectedCard.classList)
       selectedCardsWrapper.appendChild(notSelectedCard)
-      console.log(selectedCardsWrapper)
+      // console.log(selectedCardsWrapper)
     }
   })
   formatCardsVisualisation(selectedCardsWrapper)
+  addCardsAnimation()
+}
+
+function addCardsAnimation () {
+  const selectedCards = [...selectedCardsWrapper.children]
+  selectedCards.forEach((card) => {
+    card.classList.add('magic')
+    console.log(card.classList)
+  })
 }
 
 function formatCardsVisualisation (specificWrapper) {

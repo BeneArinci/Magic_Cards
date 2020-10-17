@@ -5978,6 +5978,21 @@ h1 {
   position: relative;
 }
 
+.magic {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
 .body-bg {
   background: #165a1c;
   background: linear-gradient(31deg, #165a1c 19%, #08380c 100%);

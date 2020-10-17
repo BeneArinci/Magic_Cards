@@ -69,7 +69,8 @@ function selectCard (card) {
 
 function addMagicBtn (selectedCard) {
   const magicBtn = document.getElementById('magic-btn')
-  if (magicBtn === null) {
+  const selectedCards = [...selectedCardsWrapper.children]
+  if (magicBtn === null && selectedCards.length === 1) {
     const button = document.createElement('button');
     button.classList.add('btn', 'btn-lg', 'btn-secondary', 'magic');
     button.setAttribute('id', `magic-btn`)
@@ -153,14 +154,16 @@ function addPlayAgainBtn () {
     button.style.margin = '5px';
     button.innerHTML = `Start Again`;
     btnWrapper.appendChild(button); 
-    button.addEventListener('click', () => {
-      removeBtn('play-again')
-      removeBtn('flip-btn')
-      selectedCardsWrapper.innerHTML = ''
-      cardsWrapper.innerHTML = ''
-      cards.splice(0, cards.length)
-      startGame();
-    });
+    button.addEventListener('click', () => playAgain());
+}
+
+function playAgain () {
+  removeBtn('play-again')
+  removeBtn('flip-btn')
+  selectedCardsWrapper.innerHTML = ''
+  cardsWrapper.innerHTML = ''
+  cards.splice(0, cards.length)
+  startGame();
 }
 
 

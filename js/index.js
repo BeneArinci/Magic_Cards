@@ -90,6 +90,15 @@ function performTheMagic(card) {
       console.log(selectedCardsWrapper)
     }
   })
+  formatCardsVisualisation(selectedCardsWrapper)
+}
+
+function formatCardsVisualisation (specificWrapper) {
+  cardsToStyle = [...specificWrapper.children]
+  cardsToStyle.forEach((card, i) => {
+    const positionFromLeft = i*30;
+    card.style.left = `${positionFromLeft}px`;
+  })
 }
 
 function getCardValue(card) {

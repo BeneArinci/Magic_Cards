@@ -95,6 +95,7 @@ function performTheMagic(card) {
   })
   formatCardsVisualisation(selectedCardsWrapper)
   addCardsAnimation()
+  addPlayAgainBtn()
 }
 
 function addCardsAnimation () {
@@ -145,14 +146,34 @@ function listenForBtnsClick () {
   btnShuffle.addEventListener('click', shuffleCards)
 }
 
+function addPlayAgainBtn () {
+    const button = document.createElement('button');
+    button.classList.add('btn', 'btn-lg', 'btn-secondary');
+    button.setAttribute('id', `play-again`)
+    button.style.margin = '5px';
+    button.innerHTML = `Start Again`;
+    btnWrapper.appendChild(button); 
+    button.addEventListener('click', () => {
+      removeBtn('play-again')
+      removeBtn('flip-btn')
+      selectedCardsWrapper.innerHTML = ''
+      cardsWrapper.innerHTML = ''
+      cards.splice(0, cards.length)
+      startGame();
+    });
+}
+
+
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
-  removeBtn ("start-game");
   createButtons();
   createCards();
   listenForBtnsClick();
 }
 
-document.getElementById('start-game').addEventListener('click', startGame);
+document.getElementById('start-game').addEventListener('click', () => {
+  startGame();
+  removeBtn('start-game')
+});
 

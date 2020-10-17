@@ -35,7 +35,7 @@ function populateCardsWrapper () {
 function createButtons() {
   const buttons = [
     {name: "shuffle-btn", innerHTML: "Shuffle"}, 
-    {name: "show-hide-btn", innerHTML: "Show/Hide"}
+    {name: "flip-btn", innerHTML: "Show/Hide"}
   ];
   buttons.forEach((btn) => {
     const button = document.createElement('button');
@@ -63,6 +63,7 @@ function selectCard (card) {
     const positionFromLeft = 0;
     card.style.left = `${positionFromLeft}px`;
     selectedCardsWrapper.appendChild(card)
+    removeBtn("shuffle-btn")
   }
 }
 
@@ -104,9 +105,9 @@ function getCardValue(card) {
   return card.classList.value.split('-').pop()
 }
 
-function removeStartBtn () {
-  startBtn = document.getElementById('start-game');
-  startBtn.remove();
+function removeBtn (buttonId) {
+  Btn = document.getElementById(buttonId);
+  Btn.remove();
 }
 
 function flipCards () {
@@ -126,7 +127,7 @@ function shuffle (cards) {
 }
 
 function listenForBtnsClick () {
-  const btnFlip = document.getElementById('show-hide-btn')
+  const btnFlip = document.getElementById('flip-btn')
   btnFlip.addEventListener('click', flipCards)
   const btnShuffle = document.getElementById('shuffle-btn')
   btnShuffle.addEventListener('click', shuffleCards)
@@ -135,7 +136,7 @@ function listenForBtnsClick () {
 // Function to start the game by clearing the wrapper, creating
 // and appending the buttons and all the cards to the DOM
 function startGame() {
-  removeStartBtn ();
+  removeBtn ("start-game");
   createButtons();
   createCards();
   listenForBtnsClick();

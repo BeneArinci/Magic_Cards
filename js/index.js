@@ -76,7 +76,10 @@ function addMagicBtn (selectedCard) {
     button.style.margin = '5px';
     button.innerHTML = `Magic`;
     btnWrapper.appendChild(button); 
-    button.addEventListener('click', () => performTheMagic(selectedCard))    
+    button.addEventListener('click', () => {
+      performTheMagic(selectedCard);
+      removeBtn('magic-btn')  
+    });
   }
 }
 

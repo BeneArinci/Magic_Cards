@@ -53,7 +53,7 @@ function listenForCardsClick () {
   deck.forEach((singleCard) => {
     singleCard.addEventListener('click', function() {
       selectCard(singleCard);
-      addMagicBtn();
+      addMagicBtn(singleCard);
     });
   })   
 }
@@ -67,7 +67,7 @@ function selectCard (card) {
   }
 }
 
-function addMagicBtn () {
+function addMagicBtn (selectedCard) {
   const magicBtn = document.getElementById('magic-btn')
   if (magicBtn === null) {
     const button = document.createElement('button');
@@ -76,13 +76,24 @@ function addMagicBtn () {
     button.style.margin = '5px';
     button.innerHTML = `Magic`;
     btnWrapper.appendChild(button); 
-    button.addEventListener('click', () => console.log("clicked"))    
+    button.addEventListener('click', () => performTheMagic(selectedCard))    
   }
 }
 
-
 function performTheMagic(card) {
-  console.log(card.classList)
+  const cardValue = getCardValue(card)
+  const deck = [...cardsWrapper.children]
+  deck.forEach((notSelectedCard) => {
+    if(getCardValue(notSelectedCard) === cardValue) {
+      console.log(notSelectedCard.classList)
+      selectedCardsWrapper.appendChild(notSelectedCard)
+      console.log(selectedCardsWrapper)
+    }
+  })
+}
+
+function getCardValue(card) {
+  return card.classList.value.split('-').pop()
 }
 
 function removeStartBtn () {

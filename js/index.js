@@ -71,7 +71,7 @@ function addMagicBtn (selectedCard) {
   const magicBtn = document.getElementById('magic-btn')
   if (magicBtn === null) {
     const button = document.createElement('button');
-    button.classList.add('btn', 'btn-lg', 'btn-secondary');
+    button.classList.add('btn', 'btn-lg', 'btn-secondary', 'magic');
     button.setAttribute('id', `magic-btn`)
     button.style.margin = '5px';
     button.innerHTML = `Magic`;

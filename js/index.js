@@ -22,13 +22,12 @@ function createCards() {
 
 function populateCardsWrapper () {
   cards.forEach((card, i) => {
-    const positionFromLeft = i*30;
     const cardElement = document.createElement('div');
     cardElement.setAttribute('data-value', card.value);
     cardElement.classList.add('card', `${card.suit}-${card.value}`);
-    cardElement.style.left = `${positionFromLeft}px`;
     cardsWrapper.append(cardElement);
   });
+  formatCardsVisualisation(cardsWrapper)
   listenForCardsClick()
 }
 

@@ -86,5 +86,16 @@ describe('Play game', () => {
 
     /* After magic the play again button becomes available */
     cy.contains('Start Again');
+
+    /* Click the `Start Again` button */
+    cy.contains('Start Again').click();
+
+    /* Each suit is rederted with 13 cards each (hearts, spades, diamonds, clubs) */
+    suits.forEach((suit) => {
+      cy.get(`[class*="${suit}-"]`).should('have.length', 13);
+    });
+
+    /* 'selectedCardsWrapper' is empty again */
+    cy.get('.selected-card-wrapper .card').should('not.exist');
   });
 });

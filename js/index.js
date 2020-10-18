@@ -110,7 +110,7 @@ function createCards() {
 function createButtons() {
   const buttons = [
     { name: 'shuffle-btn', innerHTML: 'Shuffle' },
-    { name: 'flip-btn', innerHTML: 'Show/Hide' },
+    { name: 'flip-btn', innerHTML: 'Flip cards' },
   ];
   buttons.forEach((btn) => {
     const button = document.createElement('button');

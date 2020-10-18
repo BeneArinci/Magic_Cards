@@ -36,17 +36,17 @@ describe('Play game', () => {
       expect(allCardClasses).to.not.deep.equal(sortedCardsClasses);
     });
 
-    // /* Click the `Flip cards` button */
-    // cy.contains('Flip cards').click();
+    /* Click the `Flip cards` button */
+    cy.contains('Flip cards').click();
 
-    // /* The cards are now flipped */
-    // cy.get('.cards-wrapper').should('have.class', 'hidden');
+    /* The cards are now flipped */
+    cy.get('.cards-wrapper').should('have.class', 'hidden');
 
-    // /* Click the `Flip cards` button */
-    // cy.contains('Flip cards').click();
+    /* Click the `Flip cards` button */
+    cy.contains('Flip cards').click();
 
-    // /* The cards are now flipped to be visible again */
-    // cy.get('.cards-wrapper').should('not.have.class', 'hidden');
+    /* The cards are now flipped to be visible again */
+    cy.get('.cards-wrapper').should('not.have.class', 'hidden');
 
     // cy.get('.selected-card-wrapper .card').should('not.exist');
     // cy.contains('Magic').should('not.exist');

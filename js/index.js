@@ -50,7 +50,7 @@ function performTheMagic(card) {
   });
   formatCardsVisualisation(selectedCardsWrapper);
   addCardsAnimation();
-  addPlayAgainBtn();
+  addPlayAgainBtn(); /* eslint-disable-line */
 }
 
 function addMagicBtn(selectedCard) {

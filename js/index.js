@@ -4,20 +4,24 @@ const btnWrapper = document.querySelector('.btn-wrapper'); /* eslint-disable-lin
 const selectedCardsWrapper = document.querySelector('.selected-cards'); /* eslint-disable-line */
 const cards = [];
 
-function createCards() {
-  // Create an array with objects containing the value and the suit of each card
-  for (let x = 0; x < suits.length; x += 1) {
-    for (let i = 1; i <= 13; i += 1) {
-      const cardObject = {
-        value: i,
-        suit: suits[x],
-      };
-      cards.push(cardObject);
-      //console.log(cardObject)
-    }
+function selectCard(card) {
+  const selectedCards = [...selectedCardsWrapper.children];
+  if (selectedCards.length === 0) {
+    const positionFromLeft = 0;
+    card.style.left = `${positionFromLeft}px`;
+    selectedCardsWrapper.appendChild(card);
+    removeBtn('shuffle-btn');
   }
-  // For each dataObject, create a new card and append it to the DOM
-  populateCardsWrapper();
+}
+
+function listenForCardsClick() {
+  const deck = [...cardsWrapper.children];
+  deck.forEach( (singleCard) => {
+    singleCard.addEventListener('click', () => {
+      selectCard(singleCard);
+      addMagicBtn(singleCard);
+    });
+  });   
 }
 
 function populateCardsWrapper() {
@@ -31,11 +35,26 @@ function populateCardsWrapper() {
   listenForCardsClick();
 }
 
+function createCards() {
+  // Create an array with objects containing the value and the suit of each card
+  for (let x = 0; x < suits.length; x += 1) {
+    for (let i = 1; i <= 13; i += 1) {
+      const cardObject = {
+        value: i,
+        suit: suits[x],
+      };
+      cards.push(cardObject);
+    }
+  }
+  // For each dataObject, create a new card and append it to the DOM
+  populateCardsWrapper();
+}
+
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
   const buttons = [
-    {name: 'shuffle-btn', innerHTML: 'Shuffle'}, 
-    {name: 'flip-btn', innerHTML: 'Show/Hide'}
+    { name: 'shuffle-btn', innerHTML: 'Shuffle' }, 
+    { name: 'flip-btn', innerHTML: 'Show/Hide' }
   ];
   buttons.forEach((btn) => {
     const button = document.createElement('button');
@@ -48,34 +67,14 @@ function createButtons() {
 }
 
 function removeBtn(buttonId) {
-  Btn = document.getElementById(buttonId);
+  const Btn = document.getElementById(buttonId);
   Btn.remove();
-}
-
-function listenForCardsClick() {
-  deck = [...cardsWrapper.children]
-  deck.forEach((singleCard) => {
-    singleCard.addEventListener('click', function() {
-      selectCard(singleCard);
-      addMagicBtn(singleCard);
-    });
-  })   
-}
-
-function selectCard(card) {
-  const selectedCards = [...selectedCardsWrapper.children]
-  if (selectedCards.length === 0) {
-    const positionFromLeft = 0;
-    card.style.left = `${positionFromLeft}px`;
-    selectedCardsWrapper.appendChild(card);
-    removeBtn('shuffle-btn');
-  }
 }
 
 function addMagicBtn(selectedCard) {
   const magicBtn = document.getElementById('magic-btn');
   const selectedCards = [...selectedCardsWrapper.children];
-  if (magicBtn === null && selectedCards.length === 1) {
+  if (magicBtn === null && selectedCards.length === 1){
     const button = document.createElement('button');
     button.classList.add('btn', 'btn-lg', 'btn-secondary', 'magic');
     button.setAttribute('id', `magic-btn`);
@@ -99,13 +98,13 @@ function playAgain() {
 }
 
 function addPlayAgainBtn() {
-    const button = document.createElement('button');
-    button.classList.add('btn', 'btn-lg', 'btn-secondary');
-    button.setAttribute('id', `play-again`);
-    button.style.margin = '5px';
-    button.innerHTML = `Start Again`;
-    btnWrapper.appendChild(button); 
-    button.addEventListener('click', () => playAgain());
+  const button = document.createElement('button');
+  button.classList.add('btn', 'btn-lg', 'btn-secondary');
+  button.setAttribute('id', `play-again`);
+  button.style.margin = '5px';
+  button.innerHTML = `Start Again`;
+  btnWrapper.appendChild(button); 
+  button.addEventListener('click', () => playAgain());
 }
 
 function performTheMagic(card) {
@@ -114,10 +113,10 @@ function performTheMagic(card) {
   deck.forEach((notSelectedCard) => {
     if(getCardValue(notSelectedCard) === cardValue) {
       //console.log(notSelectedCard.classList)
-      selectedCardsWrapper.appendChild(notSelectedCard)
+      selectedCardsWrapper.appendChild(notSelectedCard);
       // console.log(selectedCardsWrapper)
     }
-  })
+  });
   formatCardsVisualisation(selectedCardsWrapper);
   addCardsAnimation();
   addPlayAgainBtn();
@@ -127,14 +126,13 @@ function addCardsAnimation() {
   const selectedCards = [...selectedCardsWrapper.children];
   selectedCards.forEach((card) => {
     card.classList.add('magic');
-    console.log(card.classList);
-  })
+  });
 }
 
 function formatCardsVisualisation(specificWrapper) {
-  cardsToStyle = [...specificWrapper.children]
+  const cardsToStyle = [...specificWrapper.children];
   cardsToStyle.forEach((card, i) => {
-    const positionFromLeft = i*30;
+    const positionFromLeft = i * 30;
     card.style.left = `${positionFromLeft}px`;
   });
 }
@@ -146,7 +144,7 @@ function getCardValue(card) {
 function flipCards() {
   if (cardsWrapper.classList.contains('hidden')) {
     cardsWrapper.classList.remove('hidden');
-  } else { cardsWrapper.classList.add('hidden');};
+  } else { cardsWrapper.classList.add('hidden'); };
 }
 
 function shuffleCards() {
@@ -155,8 +153,8 @@ function shuffleCards() {
   populateCardsWrapper(cards);
 }
 
-function shuffle(cards) {
-  cards.sort(() => Math.random() - 0.5);
+function shuffle(cardsToShuffle) {
+  cardsToShuffle.sort(() => Math.random() - 0.5);
 }
 
 function listenForBtnsClick() {
@@ -178,4 +176,3 @@ document.getElementById('start-game').addEventListener('click', () => {
   startGame();
   removeBtn('start-game');
 });
-

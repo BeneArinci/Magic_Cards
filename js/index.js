@@ -34,7 +34,7 @@ function addCardsAnimation() {
 }
 
 function getCardValue(card) {
-  return card.classList.value.split('-').pop();
+  return card.getAttribute("data-value")
 }
 
 function performTheMagic(card) {
@@ -107,6 +107,7 @@ function createCards() {
 
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
+  removeBtn('start-game');
   const buttons = [
     { name: 'shuffle-btn', innerHTML: 'Shuffle' },
     { name: 'flip-btn', innerHTML: 'Flip cards' },
@@ -170,5 +171,4 @@ function addPlayAgainBtn() {
 
 document.getElementById('start-game').addEventListener('click', () => {
   startGame();
-  removeBtn('start-game');
 });

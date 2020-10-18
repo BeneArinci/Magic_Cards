@@ -152,7 +152,8 @@ function startGame() {
 
 function playAgain() {
   removeBtn('play-again');
-  removeBtn('flip-btn');
+  removeBtn('shuffle-btn');
+  removeBtn('flip-btn')
   selectedCardsWrapper.innerHTML = '';
   cardsWrapper.innerHTML = '';
   cards.splice(0, cards.length);

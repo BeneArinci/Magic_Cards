@@ -34,7 +34,7 @@ function addCardsAnimation() {
 }
 
 function getCardValue(card) {
-  return card.getAttribute("data-value")
+  return card.getAttribute('data-value');
 }
 
 function performTheMagic(card) {

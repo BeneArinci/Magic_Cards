@@ -80,5 +80,11 @@ describe('Play game', () => {
       expect(allCardValues).to.have.length(4);
       expect(allCardValues).to.deep.equal([selectedValue, selectedValue, selectedValue, selectedValue]);
     });
+
+    /* Magic button is no longer available after clicking on it */
+    cy.contains('Magic').should('not.exist');
+
+    /* After magic the play again button becomes available */
+    cy.contains('Start Again');
   });
 });

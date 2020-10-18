@@ -15,7 +15,6 @@ function selectCard(card) {
     const positionFromLeft = 0;
     card.style.left = `${positionFromLeft}px`;
     selectedCardsWrapper.appendChild(card);
-    removeBtn('shuffle-btn');
   }
 }
 
@@ -128,14 +127,12 @@ function flipCards() {
   } else { cardsWrapper.classList.add('hidden'); }
 }
 
-function shuffle(cardsToShuffle) {
-  cardsToShuffle.sort(() => Math.random() - 0.5);
-}
-
 function shuffleCards() {
-  cardsWrapper.innerHTML = '';
-  shuffle(cards);
-  populateCardsWrapper(cards);
+  const deck = [...cardsWrapper.children];
+  for (let i = deck.length; i >= 0; i -= 1) {
+    cardsWrapper.appendChild(deck[Math.random() * i | 0]); /* eslint no-bitwise: [2, { allow: ["|"] }] */
+  }
+  formatCardsVisualisation(cardsWrapper);
 }
 
 function listenForBtnsClick() {

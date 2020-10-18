@@ -152,12 +152,10 @@ function startGame() {
 
 function playAgain() {
   removeBtn('play-again');
-  removeBtn('shuffle-btn');
-  removeBtn('flip-btn')
   selectedCardsWrapper.innerHTML = '';
   cardsWrapper.innerHTML = '';
   cards.splice(0, cards.length);
-  startGame();
+  createCards();
 }
 
 function addPlayAgainBtn() {

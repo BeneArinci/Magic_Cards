@@ -4,7 +4,7 @@ const btnWrapper = document.querySelector('.btn-wrapper'); /* eslint-disable-lin
 const selectedCardsWrapper = document.querySelector('.selected-cards'); /* eslint-disable-line */
 const cards = [];
 
-function removeBtn(buttonId) {
+function removeButton(buttonId) {
   const btn = document.getElementById(buttonId);
   btn.remove();
 }
@@ -49,10 +49,10 @@ function performTheMagic(card) {
   });
   formatCardsVisualisation(selectedCardsWrapper);
   addCardsAnimation();
-  addPlayAgainBtn(); /* eslint-disable-line */
+  createPlayAgainBtn(); /* eslint-disable-line */
 }
 
-function addMagicBtn(selectedCard) {
+function createMagicButton(selectedCard) {
   const magicBtn = document.getElementById('magic-btn');
   const selectedCards = [...selectedCardsWrapper.children];
   if (magicBtn === null && selectedCards.length === 1) {
@@ -64,7 +64,7 @@ function addMagicBtn(selectedCard) {
     btnWrapper.appendChild(button);
     button.addEventListener('click', () => {
       performTheMagic(selectedCard);
-      removeBtn('magic-btn');
+      removeButton('magic-btn');
     });
   }
 }
@@ -74,7 +74,7 @@ function listenForCardsClick() {
   deck.forEach((singleCard) => {
     singleCard.addEventListener('click', () => {
       selectCard(singleCard);
-      addMagicBtn(singleCard);
+      createMagicButton(singleCard);
     });
   });
 }
@@ -107,7 +107,7 @@ function createCards() {
 
 // Function to clear out the initial button and create new buttons to play the game.
 function createButtons() {
-  removeBtn('start-game');
+  removeButton('start-game');
   const buttons = [
     { name: 'shuffle-btn', innerHTML: 'Shuffle' },
     { name: 'flip-btn', innerHTML: 'Flip cards' },
@@ -152,14 +152,14 @@ function startGame() {
 }
 
 function playAgain() {
-  removeBtn('play-again');
+  removeButton('play-again');
   selectedCardsWrapper.innerHTML = '';
   cardsWrapper.innerHTML = '';
   cards.splice(0, cards.length);
   createCards();
 }
 
-function addPlayAgainBtn() {
+function createPlayAgainBtn() {
   const button = document.createElement('button');
   button.classList.add('btn', 'btn-lg', 'btn-secondary');
   button.setAttribute('id', 'play-again');

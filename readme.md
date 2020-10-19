@@ -11,6 +11,12 @@ This is how my final outcome looks like<br><br>
 - I added a few more tests related to play again (presence of play again button, absence of magic button after clicking it, game functionality after clicking play again). Tests regarding the game functionalities after clicking play again are the same as the provided ones because the app must work in the same way after a new game is started
 - I added an animation to the magic button and to the selected cards (when the magic is performed)
 
+### Areas of Improvement
+Anything can be improved :smile:.<br>
+If I had more time to work on this app I would refactor even more my code and work on the bonus functionalities I left.<br>
+In my code there are a few repetitions. I.e. I would like to create a single method for creating a basic button. A method that can be used for any specific button by sharing with it the specific attributes.<br>
+There are also a few methods that have too many responsibilities. I would like to work on it in order to better follow the Single Responsibility Principle.<br>
+I learned a lot of new stuff working on this project. Styling is not my biggest strength and I need to work more on it. I have experience with CSS but not with SCSS. I would love to learn more about it, being able to implement the styling (bonus) functionalities.
 
 
 # Smart Magic Cards (Requirements)

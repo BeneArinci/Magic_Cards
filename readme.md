@@ -1,4 +1,19 @@
-# Smart Magic Cards
+# My Smart Magic Cards
+To begin with, I wanted to thank you all for giving me the possibility to work on this tech task. After using JS frameworks for a while now, it was good to brush up on my VanillaJS skills. At the same time, I had the opportunity to learn/apply a lot of new functionalities and to make some experience with Cypress for testing (it was my first time) :smile:
+<br><br>
+This is how my final outcome looks like<br><br>
+![presentation](./assets/Magic-Cards.gif)<br><br>
+
+### Implemented functionalities
+- my app has the basic requirements for playing the game
+- I added play again functionality that allows to restarting the game without having to refresh the page
+- I uncommented the existing tests. All tests are passing
+- I added a few more tests related to play again (presence of play again button, absence of magic button after clicking it, game functionality after clicking play again). Tests regarding the game functionalities after clicking play again are the same as the provided ones because the app must work in the same way after a new game is started
+- I added an animation to the magic button and to the selected cards (when the magic is performed)
+
+
+
+# Smart Magic Cards (Requirements)
 Join Smart by performing a simple magic trick.
 
 A magician has a deck of cards, 52 cards, 13 of each suit (Hearts, Diamonds, Clubs and Spades).<br>
